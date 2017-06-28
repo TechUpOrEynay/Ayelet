@@ -9,14 +9,16 @@ namespace Ayellet.Dal
     {
         public List<Contact> GetContacts()
         {
-            using (AyelletContext context = new AyelletContextFactory().Create())
+            using (AyelletEntities context = new AyelletEntities())
             {
                 return context.Contact.ToList();
             }
         }
+
+        
         public Contact GetContact(int id)
         {
-            using (AyelletContext context = new AyelletContextFactory().Create())
+            using (AyelletEntities context = new AyelletEntities())
             {
                 return context.Contact.FirstOrDefault(c => c.ContactId == id);
             }
