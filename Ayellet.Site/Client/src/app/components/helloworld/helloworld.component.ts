@@ -7,8 +7,8 @@ import { ContactsService } from '../../services/contacts.service';
     templateUrl: './helloworld.component.html'
 })
 export class HelloWorldComponent implements OnInit {
-    private allContacts: Contact[];
-    private contacts: Contact;
+    public allContacts: Contact[];
+    public contacts: Contact;
 
     constructor(private contactsService: ContactsService) {
     }

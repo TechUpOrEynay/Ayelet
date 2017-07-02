@@ -13,7 +13,6 @@ using System.Web.Http.Cors;
 
 namespace Ayellet.Site.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     [RoutePrefix("api/Contacts")]
     public class ContactsController : BaseController
     {
