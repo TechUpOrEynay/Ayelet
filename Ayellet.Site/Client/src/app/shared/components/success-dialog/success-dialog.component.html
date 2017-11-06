@@ -1,0 +1,23 @@
+<!-- <div dir="rtl">
+        <div md-dialog-actions>
+            <button type="button" md-button 
+            (click)="dialogRef.close()">Cancel</button>
+            <button   md-button md-dialog-close>לא</button>
+            <button md-button class="close" (click)="close()" >close</button>
+        </div>      
+        <h2 md-dialog-title>{{data.title}}</h2>
+        <md-dialog-content>
+            {{data.text}}
+        </md-dialog-content>
+</div> -->
+<div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="close()">&times;</button>
+                <!-- <h4 class="modal-title">אישור</h4> -->
+            </div>
+            <div class="modal-body">
+                    {{data}}
+            </div>
+        </div>
+    </div>

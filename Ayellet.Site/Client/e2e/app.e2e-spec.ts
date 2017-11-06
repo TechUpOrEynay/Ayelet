@@ -1,10 +1,10 @@
-import { AyelletPage } from './app.po';
+import { oreyniPage } from './app.po';
 
-describe('ayellet App', () => {
-  let page: AyelletPage;
+describe('oreyni App', () => {
+  let page: oreyniPage;
 
   beforeEach(() => {
-    page = new AyelletPage();
+    page = new oreyniPage();
   });
 
   it('should display welcome message', () => {

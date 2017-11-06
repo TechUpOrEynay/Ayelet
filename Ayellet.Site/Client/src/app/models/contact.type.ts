@@ -1,7 +1,9 @@
 ﻿export class Contact {
-    contactId: number;
-    name: string;
-    tel: string;
+    id: number;
+    firstName: string;
+    lastName:string;
+    fullName:string;
+    
 
     constructor() {
 

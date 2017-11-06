@@ -26,6 +26,7 @@
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -190,6 +191,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SampleDataController.cs" />
@@ -230,9 +232,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -278,9 +277,9 @@
       <Project>{426e98e4-53e5-4545-9180-856196b73390}</Project>
       <Name>Ayellet.Bl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Server\Ayellet.Model\Ayellet.Model.csproj">
-      <Project>{dc471b31-16f8-450c-b72b-f1390fd6cf57}</Project>
-      <Name>Ayellet.Model</Name>
+    <ProjectReference Include="..\Server\Ayellet.Entities\Ayellet.Entities.csproj">
+      <Project>{ac3a4fff-f5f0-42b4-b043-bb0be3edf192}</Project>
+      <Name>Ayellet.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

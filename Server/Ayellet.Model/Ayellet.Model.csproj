@@ -49,53 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AyelletModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AyelletModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AyelletModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AyelletModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AyelletModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AyelletModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Contact.cs">
-      <DependentUpon>AyelletModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="AyelletModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AyelletModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="AyelletModel.edmx.diagram">
-      <DependentUpon>AyelletModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="AyelletModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AyelletModel.edmx</DependentUpon>
-      <LastGenOutput>AyelletModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="AyelletModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AyelletModel.edmx</DependentUpon>
-      <LastGenOutput>AyelletModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

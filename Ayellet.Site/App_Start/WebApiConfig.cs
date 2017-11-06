@@ -10,6 +10,8 @@ namespace Ayellet.Site
     {
         public static void Register(HttpConfiguration config)
         {
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new
+            Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
             // Web API configuration and services
             var corsAttr = new EnableCorsAttribute("*", "*", "*");
 

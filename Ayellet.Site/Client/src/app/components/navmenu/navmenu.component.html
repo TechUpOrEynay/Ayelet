@@ -1,43 +1,39 @@
-<div class='main-nav'>
-    <div class='navbar navbar-inverse'>
-        <div class='navbar-header'>
-            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
-                <span class='sr-only'>Toggle navigation</span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-            </button>
-            <a class='navbar-brand' [routerLink]="['/home']">Ayellet</a>
-        </div>
-        <div class='clearfix'></div>
-        <div class='navbar-collapse collapse'>
-            <ul class='nav navbar-nav'>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/home']">
+<mat-toolbar>
+
+    <b>אור עיני - לוגו</b>
+    <!-- <div>
+        <b>{{user.userName}}</b>
+        <button style="text-align:right" (click)="logOut()">צא </button>
+    </div> -->
+
+    <mat-toolbar-row color="black">
+        <a [routerLink]="['/home']">
                         <span class='glyphicon glyphicon-home'></span> Home
                     </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/counter']">
+        <!-- <a [routerLink]="['/counter']">
                         <span class='glyphicon glyphicon-education'></span> Counter
                     </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/fetch-data']">
-                        <span class='glyphicon glyphicon-th-list'></span> Fetch data
+        <a [routerLink]="['/fetch-data']">
+                         Fetch data
                     </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/hello']">
+        <a [routerLink]="['/hello']">
                         <span class='glyphicon glyphicon-user'></span> Hello
                     </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/weather']">
+        <a [routerLink]="['/weather']">
                         <span class='glyphicon glyphicon-cloud'></span> City Weather
+                    </a>-->
+        <a [routerLink]="['/home']">
+                        <span class='glyphicon glyphicon-cloud'></span> אודותינו
                     </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+        <a [routerLink]="['/home']">
+                        <span class='glyphicon glyphicon-cloud'></span> צור קשר
+                    </a>
+        <a [routerLink]="['/contacts']">
+                        <span class='glyphicon glyphicon-cloud'></span> אנשי קשר
+                   </a>
+        <a [routerLink]="['/projects']">
+                        <span class='glyphicon glyphicon-cloud'></span> פרויקטים
+                   </a>
+
+    </mat-toolbar-row>
+</mat-toolbar>

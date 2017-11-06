@@ -1,0 +1,37 @@
+<mat-toolbar>
+    <b>אור עיני - לוגו</b>
+    <!-- <div *ngIf="!isLogin">
+        <button  md-button class="btn btn-primary" (click)="login()">כניסה למשתמש רשום</button>
+    </div>
+    <div *ngIf="isLogin">
+        <button style="text-align:right" (click)="logOut()">צא</button> 
+    </div> -->
+    <!-- <div >
+        <b></b>
+        <button [hidden]="!isLogin"style="text-align:right" (click)="logOut()">צא {{user.userName}}</button>
+    </div> -->
+
+    <mat-toolbar-row color="black">
+        <a [routerLink]="['/home']">
+                        <span class='glyphicon glyphicon-home'></span> Home
+                    </a>
+        <!-- <a [routerLink]="['/customers']">
+                        <span class='glyphicon glyphicon-cloud'></span> צור קשר
+                    </a>
+        <a [routerLink]="['/customers']">
+                        <span class='glyphicon glyphicon-cloud'></span> אודותינו
+                    </a>
+        <a [hidden]="!isLogin" [routerLink]="['/customers']">
+                        <span class='glyphicon glyphicon-cloud'></span> לקוחות
+                    </a>
+        <a [hidden]="!isLogin" [routerLink]="['/customers']">
+                        <span class='glyphicon glyphicon-cloud'></span> פעילויות
+                    </a>
+        <a [hidden]="!isLogin" [routerLink]="['/donors']">
+                        <span class='glyphicon glyphicon-cloud'></span> תורמים
+                    </a> 
+        <a [hidden]="!isLogin" [routerLink]="['/managementOrEnay']">
+                        <span class='glyphicon glyphicon-cloud'></span> ניהול
+                    </a> -->
+    </mat-toolbar-row>
+</mat-toolbar>

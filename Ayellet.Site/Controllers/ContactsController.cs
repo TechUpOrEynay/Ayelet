@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Ayellet.Bl;
 using System.Collections;
-using Ayellet.Model;
+using Ayellet.Entities;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -14,7 +14,7 @@ using System.Web.Http.Cors;
 namespace Ayellet.Site.Controllers
 {
     [RoutePrefix("api/Contacts")]
-    public class ContactsController : BaseController
+    public class ContactsController : ApiController
     {
         ContactsBl _contactsBl;
        
@@ -23,21 +23,16 @@ namespace Ayellet.Site.Controllers
             _contactsBl = new ContactsBl();
         }
         [HttpGet]
-        public HttpResponseMessage Get()
+        [Route("GetContacts")]
+        public IList<Contact> GetContacts()
         {
-            return base.RunCodeSafly<IList<Contact>>("GetContacts", () =>
-             {
                  return _contactsBl.GetContacts();
-             });
         }
-
+        [HttpGet]
         [Route("GetContactDetail/{id}")]
-        public HttpResponseMessage GetContactDetail(int id)
+        public Contact GetContactDetail(int id)
         {
-            return base.RunCodeSafly<Contact>("GetContactDetail", () =>
-            {
                 return _contactsBl.GetContact(id);
-            });
         }
     }
 }

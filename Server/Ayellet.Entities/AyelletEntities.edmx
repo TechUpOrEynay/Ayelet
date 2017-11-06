@@ -1,0 +1,857 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AyelletModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Mobile" Type="varchar" MaxLength="20" />
+          <Property Name="RelatedPersonID" Type="int" />
+          <Property Name="Notes" Type="varchar" MaxLength="200" />
+          <Property Name="IsNewlater" Type="bit" />
+          <Property Name="IsVolunteer" Type="bit" />
+        </EntityType>
+        <EntityType Name="ContactFollowup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ContactID" Type="int" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Details" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Embed">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="VolunteerID" Type="int" />
+          <Property Name="InterstedtID" Type="int" />
+          <Property Name="Details" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="AreaID" Type="int" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Details" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ProjectIntersted">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ContactID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+          <Property Name="Details" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProjectVolunteer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ContactID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+          <Property Name="Details" Type="varchar" MaxLength="100" />
+          <Property Name="AreaID" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="RelatedPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RelationContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="RelationshipID" Type="int" />
+          <Property Name="ContactID" Type="int" />
+        </EntityType>
+        <EntityType Name="Relationship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="RelationshipType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="25" />
+          <Property Name="Password" Type="varchar" MaxLength="25" />
+          <Property Name="IsAdmin" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Contact_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_RelatedPerson">
+          <End Role="RelatedPerson" Type="Self.RelatedPerson" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RelatedPerson">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="RelatedPersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactFollowup_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="ContactFollowup" Type="Self.ContactFollowup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactFollowup">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Embed_ProjectIntersted">
+          <End Role="ProjectIntersted" Type="Self.ProjectIntersted" Multiplicity="0..1" />
+          <End Role="Embed" Type="Self.Embed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectIntersted">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Embed">
+              <PropertyRef Name="InterstedtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Embed_ProjectVolunteer">
+          <End Role="ProjectVolunteer" Type="Self.ProjectVolunteer" Multiplicity="0..1" />
+          <End Role="Embed" Type="Self.Embed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectVolunteer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Embed">
+              <PropertyRef Name="InterstedtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectIntersted_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="ProjectIntersted" Type="Self.ProjectIntersted" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectIntersted">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectIntersted_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+          <End Role="ProjectIntersted" Type="Self.ProjectIntersted" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectIntersted">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectIntersted_ProjectIntersted">
+          <End Role="ProjectIntersted" Type="Self.ProjectIntersted" Multiplicity="1" />
+          <End Role="ProjectIntersted1" Type="Self.ProjectIntersted" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectIntersted">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectIntersted1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectVolunteer_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="ProjectVolunteer" Type="Self.ProjectVolunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectVolunteer">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectVolunteer_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="ProjectVolunteer" Type="Self.ProjectVolunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectVolunteer">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectVolunteer_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+          <End Role="ProjectVolunteer" Type="Self.ProjectVolunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectVolunteer">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelationContact_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="RelationContact" Type="Self.RelationContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelationContact">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelationContact_Relationship">
+          <End Role="Relationship" Type="Self.Relationship" Multiplicity="0..1" />
+          <End Role="RelationContact" Type="Self.RelationContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelationContact">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AyelletModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactFollowup" EntityType="Self.ContactFollowup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Embed" EntityType="Self.Embed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectIntersted" EntityType="Self.ProjectIntersted" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectVolunteer" EntityType="Self.ProjectVolunteer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelatedPerson" EntityType="Self.RelatedPerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelationContact" EntityType="Self.RelationContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Relationship" EntityType="Self.Relationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Contact_Location" Association="Self.FK_Contact_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_RelatedPerson" Association="Self.FK_Contact_RelatedPerson">
+            <End Role="RelatedPerson" EntitySet="RelatedPerson" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactFollowup_Contact" Association="Self.FK_ContactFollowup_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ContactFollowup" EntitySet="ContactFollowup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Embed_ProjectIntersted" Association="Self.FK_Embed_ProjectIntersted">
+            <End Role="ProjectIntersted" EntitySet="ProjectIntersted" />
+            <End Role="Embed" EntitySet="Embed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Embed_ProjectVolunteer" Association="Self.FK_Embed_ProjectVolunteer">
+            <End Role="ProjectVolunteer" EntitySet="ProjectVolunteer" />
+            <End Role="Embed" EntitySet="Embed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Area" Association="Self.FK_Location_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectIntersted_Contact" Association="Self.FK_ProjectIntersted_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ProjectIntersted" EntitySet="ProjectIntersted" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectIntersted_Project" Association="Self.FK_ProjectIntersted_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectIntersted" EntitySet="ProjectIntersted" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectIntersted_ProjectIntersted" Association="Self.FK_ProjectIntersted_ProjectIntersted">
+            <End Role="ProjectIntersted" EntitySet="ProjectIntersted" />
+            <End Role="ProjectIntersted1" EntitySet="ProjectIntersted" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectVolunteer_Area" Association="Self.FK_ProjectVolunteer_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="ProjectVolunteer" EntitySet="ProjectVolunteer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectVolunteer_Contact" Association="Self.FK_ProjectVolunteer_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ProjectVolunteer" EntitySet="ProjectVolunteer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectVolunteer_Project" Association="Self.FK_ProjectVolunteer_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectVolunteer" EntitySet="ProjectVolunteer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelationContact_Contact" Association="Self.FK_RelationContact_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="RelationContact" EntitySet="RelationContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelationContact_Relationship" Association="Self.FK_RelationContact_Relationship">
+            <End Role="Relationship" EntitySet="Relationship" />
+            <End Role="RelationContact" EntitySet="RelationContact" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AyelletModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RelatedPersonID" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsNewlater" Type="Boolean" />
+          <Property Name="IsVolunteer" Type="Boolean" />
+          </EntityType>
+        <EntityType Name="ContactFollowup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ContactID" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Details" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Embed">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="VolunteerID" Type="Int32" />
+          <Property Name="InterstedtID" Type="Int32" />
+          <Property Name="Details" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AreaID" Type="Int32" />
+          </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Details" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          </EntityType>
+        <EntityType Name="ProjectIntersted">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ContactID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+          <Property Name="Details" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          </EntityType>
+        <EntityType Name="ProjectVolunteer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ContactID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+          <Property Name="Details" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AreaID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          </EntityType>
+        <EntityType Name="RelatedPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RelationContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RelationshipID" Type="Int32" />
+          <Property Name="ContactID" Type="Int32" />
+          </EntityType>
+        <EntityType Name="Relationship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RelationshipType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IsAdmin" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_Location_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectVolunteer_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="ProjectVolunteer" Type="Self.ProjectVolunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectVolunteer">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_RelatedPerson">
+          <End Role="RelatedPerson" Type="Self.RelatedPerson" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RelatedPerson">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="RelatedPersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactFollowup_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="ContactFollowup" Type="Self.ContactFollowup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactFollowup">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectIntersted_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="ProjectIntersted" Type="Self.ProjectIntersted" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectIntersted">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectVolunteer_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="ProjectVolunteer" Type="Self.ProjectVolunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectVolunteer">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelationContact_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="RelationContact" Type="Self.RelationContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelationContact">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Embed_ProjectIntersted">
+          <End Role="ProjectIntersted" Type="Self.ProjectIntersted" Multiplicity="0..1" />
+          <End Role="Embed" Type="Self.Embed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectIntersted">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Embed">
+              <PropertyRef Name="InterstedtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Embed_ProjectVolunteer">
+          <End Role="ProjectVolunteer" Type="Self.ProjectVolunteer" Multiplicity="0..1" />
+          <End Role="Embed" Type="Self.Embed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectVolunteer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Embed">
+              <PropertyRef Name="InterstedtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectIntersted_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+          <End Role="ProjectIntersted" Type="Self.ProjectIntersted" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectIntersted">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectVolunteer_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+          <End Role="ProjectVolunteer" Type="Self.ProjectVolunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectVolunteer">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectIntersted_ProjectIntersted">
+          <End Role="ProjectIntersted" Type="Self.ProjectIntersted" Multiplicity="1" />
+          <End Role="ProjectIntersted1" Type="Self.ProjectIntersted" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectIntersted">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectIntersted1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelationContact_Relationship">
+          <End Role="Relationship" Type="Self.Relationship" Multiplicity="0..1" />
+          <End Role="RelationContact" Type="Self.RelationContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelationContact">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AyelletEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Area" EntityType="Self.Area" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" />
+          <EntitySet Name="ContactFollowup" EntityType="Self.ContactFollowup" />
+          <EntitySet Name="Embed" EntityType="Self.Embed" />
+          <EntitySet Name="Location" EntityType="Self.Location" />
+          <EntitySet Name="Project" EntityType="Self.Project" />
+          <EntitySet Name="ProjectIntersted" EntityType="Self.ProjectIntersted" />
+          <EntitySet Name="ProjectVolunteer" EntityType="Self.ProjectVolunteer" />
+          <EntitySet Name="RelatedPerson" EntityType="Self.RelatedPerson" />
+          <EntitySet Name="RelationContact" EntityType="Self.RelationContact" />
+          <EntitySet Name="Relationship" EntityType="Self.Relationship" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Location_Area" Association="Self.FK_Location_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectVolunteer_Area" Association="Self.FK_ProjectVolunteer_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="ProjectVolunteer" EntitySet="ProjectVolunteer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_Location" Association="Self.FK_Contact_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_RelatedPerson" Association="Self.FK_Contact_RelatedPerson">
+            <End Role="RelatedPerson" EntitySet="RelatedPerson" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactFollowup_Contact" Association="Self.FK_ContactFollowup_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ContactFollowup" EntitySet="ContactFollowup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectIntersted_Contact" Association="Self.FK_ProjectIntersted_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ProjectIntersted" EntitySet="ProjectIntersted" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectVolunteer_Contact" Association="Self.FK_ProjectVolunteer_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ProjectVolunteer" EntitySet="ProjectVolunteer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelationContact_Contact" Association="Self.FK_RelationContact_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="RelationContact" EntitySet="RelationContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Embed_ProjectIntersted" Association="Self.FK_Embed_ProjectIntersted">
+            <End Role="ProjectIntersted" EntitySet="ProjectIntersted" />
+            <End Role="Embed" EntitySet="Embed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Embed_ProjectVolunteer" Association="Self.FK_Embed_ProjectVolunteer">
+            <End Role="ProjectVolunteer" EntitySet="ProjectVolunteer" />
+            <End Role="Embed" EntitySet="Embed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectIntersted_Project" Association="Self.FK_ProjectIntersted_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectIntersted" EntitySet="ProjectIntersted" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectVolunteer_Project" Association="Self.FK_ProjectVolunteer_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectVolunteer" EntitySet="ProjectVolunteer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectIntersted_ProjectIntersted" Association="Self.FK_ProjectIntersted_ProjectIntersted">
+            <End Role="ProjectIntersted" EntitySet="ProjectIntersted" />
+            <End Role="ProjectIntersted1" EntitySet="ProjectIntersted" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelationContact_Relationship" Association="Self.FK_RelationContact_Relationship">
+            <End Role="Relationship" EntitySet="Relationship" />
+            <End Role="RelationContact" EntitySet="RelationContact" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AyelletModelStoreContainer" CdmEntityContainer="AyelletEntities">
+          <EntitySetMapping Name="Area">
+            <EntityTypeMapping TypeName="AyelletModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="AyelletModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="RelatedPersonID" ColumnName="RelatedPersonID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="IsNewlater" ColumnName="IsNewlater" />
+                <ScalarProperty Name="IsVolunteer" ColumnName="IsVolunteer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactFollowup">
+            <EntityTypeMapping TypeName="AyelletModel.ContactFollowup">
+              <MappingFragment StoreEntitySet="ContactFollowup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Embed">
+            <EntityTypeMapping TypeName="AyelletModel.Embed">
+              <MappingFragment StoreEntitySet="Embed">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VolunteerID" ColumnName="VolunteerID" />
+                <ScalarProperty Name="InterstedtID" ColumnName="InterstedtID" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Location">
+            <EntityTypeMapping TypeName="AyelletModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project">
+            <EntityTypeMapping TypeName="AyelletModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectIntersted">
+            <EntityTypeMapping TypeName="AyelletModel.ProjectIntersted">
+              <MappingFragment StoreEntitySet="ProjectIntersted">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectVolunteer">
+            <EntityTypeMapping TypeName="AyelletModel.ProjectVolunteer">
+              <MappingFragment StoreEntitySet="ProjectVolunteer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelatedPerson">
+            <EntityTypeMapping TypeName="AyelletModel.RelatedPerson">
+              <MappingFragment StoreEntitySet="RelatedPerson">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelationContact">
+            <EntityTypeMapping TypeName="AyelletModel.RelationContact">
+              <MappingFragment StoreEntitySet="RelationContact">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RelationshipID" ColumnName="RelationshipID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Relationship">
+            <EntityTypeMapping TypeName="AyelletModel.Relationship">
+              <MappingFragment StoreEntitySet="Relationship">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RelationshipType" ColumnName="RelationshipType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="AyelletModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

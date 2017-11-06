@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4dab5a74916f4ab59094ea31b4635364" Name="Diagram1">
+        <EntityTypeShape EntityType="AyelletModel.Area" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyelletModel.Contact" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyelletModel.ContactFollowup" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyelletModel.Embed" Width="1.5" PointX="12.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyelletModel.Location" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyelletModel.Project" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyelletModel.ProjectIntersted" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyelletModel.ProjectVolunteer" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyelletModel.RelatedPerson" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyelletModel.RelationContact" Width="1.5" PointX="7.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyelletModel.Relationship" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyelletModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="AyelletModel.FK_Location_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="AyelletModel.FK_ProjectVolunteer_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="AyelletModel.FK_Contact_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="AyelletModel.FK_Contact_RelatedPerson" ManuallyRouted="false" />
+        <AssociationConnector Association="AyelletModel.FK_ContactFollowup_Contact" ManuallyRouted="false" />
+        <AssociationConnector Association="AyelletModel.FK_ProjectIntersted_Contact" ManuallyRouted="false" />
+        <AssociationConnector Association="AyelletModel.FK_ProjectVolunteer_Contact" ManuallyRouted="false" />
+        <AssociationConnector Association="AyelletModel.FK_RelationContact_Contact" ManuallyRouted="false" />
+        <AssociationConnector Association="AyelletModel.FK_Embed_ProjectIntersted" ManuallyRouted="false" />
+        <AssociationConnector Association="AyelletModel.FK_Embed_ProjectVolunteer" ManuallyRouted="false" />
+        <AssociationConnector Association="AyelletModel.FK_ProjectIntersted_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="AyelletModel.FK_ProjectVolunteer_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="AyelletModel.FK_ProjectIntersted_ProjectIntersted" ManuallyRouted="false" />
+        <AssociationConnector Association="AyelletModel.FK_RelationContact_Relationship" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "ayellet"
+    "name": "oreyni"
   },
   "apps": [
     {
@@ -24,7 +24,8 @@
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

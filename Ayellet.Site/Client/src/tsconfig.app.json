@@ -1,9 +1,11 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "",
+     "experimentalDecorators": true,
     "outDir": "../out-tsc/app",
     "module": "es2015",
-    "baseUrl": "",
+    "sourceMap": true,
     "types": []
   },
   "exclude": [

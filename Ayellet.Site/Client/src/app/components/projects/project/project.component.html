@@ -1,0 +1,14 @@
+<mat-toolbar class="toolbar">        
+    <a class="a" *ngIf="currentProject" [routerLink]="['/projects/intresting',currentProject.id]">
+        <span class='glyphicon'></span>מתעניינים 
+    </a>
+    <a class="a" *ngIf="currentProject" [routerLink]="['/projects/volunteer',currentProject.id]">
+        <span class='glyphicon'></span>מתנדבים
+    </a>
+    <a class="a" *ngIf="currentProject" [routerLink]="['/projects/embed',currentProject.id]">
+        <span class='glyphicon'></span>שיבוץ
+    </a>
+</mat-toolbar>
+    <div>
+        <router-outlet></router-outlet>
+    </div>

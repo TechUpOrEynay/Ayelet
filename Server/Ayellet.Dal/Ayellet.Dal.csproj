@@ -46,13 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProjectsDal .cs" />
     <Compile Include="ContactsDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ayellet.Model\Ayellet.Model.csproj">
-      <Project>{dc471b31-16f8-450c-b72b-f1390fd6cf57}</Project>
-      <Name>Ayellet.Model</Name>
+    <ProjectReference Include="..\Ayellet.Entities\Ayellet.Entities.csproj">
+      <Project>{ac3a4fff-f5f0-42b4-b043-bb0be3edf192}</Project>
+      <Name>Ayellet.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

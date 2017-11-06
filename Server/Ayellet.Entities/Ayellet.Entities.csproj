@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,8 +49,86 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Contact.cs" />
+    <Compile Include="Area.cs">
+      <DependentUpon>AyelletEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AyelletEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AyelletEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AyelletEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AyelletEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AyelletEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AyelletEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>AyelletEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactFollowup.cs">
+      <DependentUpon>AyelletEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Embed.cs">
+      <DependentUpon>AyelletEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Location.cs">
+      <DependentUpon>AyelletEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Project.cs">
+      <DependentUpon>AyelletEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectIntersted.cs">
+      <DependentUpon>AyelletEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectVolunteer.cs">
+      <DependentUpon>AyelletEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelatedPerson.cs">
+      <DependentUpon>AyelletEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RelationContact.cs">
+      <DependentUpon>AyelletEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship.cs">
+      <DependentUpon>AyelletEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>AyelletEntities.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="AyelletEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AyelletEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="AyelletEntities.edmx.diagram">
+      <DependentUpon>AyelletEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AyelletEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AyelletEntities.Context.cs</LastGenOutput>
+      <DependentUpon>AyelletEntities.edmx</DependentUpon>
+    </Content>
+    <Content Include="AyelletEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AyelletEntities.edmx</DependentUpon>
+      <LastGenOutput>AyelletEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

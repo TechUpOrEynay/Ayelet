@@ -1,0 +1,44 @@
+
+<!--<div class="row">
+   <div dir="rtl" class="input-group col-md-10">
+        <div class="input-field">
+                <input  type="text"  mdInput placeholder="בחר איש קשר" class="validate filter-input"  [(ngModel)]=query (keyup)=filter()>
+        </div>
+        <div class="suggestions" *ngIf="filteredList.length > 0">
+            <ul *ngFor="let item of filteredList" class="list-group">
+                 <li class="list-group-item">
+                      <a (click)="select(item)">{{item.fullName}}</a>
+                 </li>
+            </ul>
+        </div>
+    </div>
+  </div>
+  
+  <div class='row'>
+    <div class='col-md-10'>
+        <contact [currentContact]="selectedContact"> </contact>
+    </div>
+  </div>
+</div> -->
+
+<div class='row'>
+
+  <div class='col-md-8'>
+    <project [currentProject]="selectedProject"> </project>
+  </div> 
+  <div class='col-md-3'>
+    <form class="form">
+    
+      <mat-input-container >
+          <input  type="text"  matInput placeholder="בחר פרויקט" [matAutocomplete]="auto" [formControl]="projectCtrl"  [(ngModel)]="selectedProject" >
+      </mat-input-container>
+
+        <mat-autocomplete  #auto="matAutocomplete" [displayWith]="displayProject">
+          <mat-option  *ngFor="let item of filteredProjects  | async" [value]="item.name">
+            {{item.name}}
+          </mat-option>
+        </mat-autocomplete>
+   
+     </form>
+  </div>
+</div>

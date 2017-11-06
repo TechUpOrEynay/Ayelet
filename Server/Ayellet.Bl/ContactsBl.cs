@@ -1,5 +1,5 @@
 ﻿using Ayellet.Dal;
-using Ayellet.Model;
+using Ayellet.Entities;
 using System;
 using System.Collections;
 using System.Collections.Generic;

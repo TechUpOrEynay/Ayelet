@@ -1,25 +1,44 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {HomeComponent} from './components/home/home.component';
-import {HelloWorldComponent} from './components/helloworld/helloworld.component';
-import {FetchDataComponent} from './components/fetchdata/fetchdata.component';
-import {CounterComponent} from './components/counter/counter.component';
-import {WeatherComponent} from './components/weather/weather.component';
-import {ContactsService } from './services/contacts.service';
+import { HomeComponent } from './components/home/home.component';
+import {ContactsComponent} from './components/contacts/contacts.component';
+import {ContactDetailsComponent} from './components/contacts/contact/contact-details/contact-details.component';
+import {ContactProjectsComponent} from './components/contacts/contact/contact-projects/contact-projects.component';
+import {ContactFollowupComponent} from './components/contacts/contact/contact-followup/contact-followup.component';
+import {ProjectsComponent} from './components/projects/projects.component';
+import {ProjectIntrestingComponent} from './components/projects/project/project-intresting/project-intresting.component';
+import {ProjectVolunteerComponent} from './components/projects/project/project-volunteer/project-volunteer.component';
+import {ProjectEmbedComponent} from './components/projects/project/project-embed/project-embed.component';
+import { AppComponent } from './components/app/app.component';
+import { NavMenuComponent } from './components/navmenu/navmenu.component';
+import { NavmenuStartComponent } from './components/navmenu/navmenuStart/navmenuStart.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'hello', component: HelloWorldComponent },
-            { path: 'weather', component: WeatherComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
-            { path: '**', redirectTo: '/' }
+  { path: 'home', component: HomeComponent },
+  { path: 'projects' , component:ProjectsComponent} ,
+  { path: 'contacts', component: ContactsComponent , 
+  children:[
+    {path: 'details/:currentContact', component: ContactDetailsComponent},
+    {path: 'projects/:currentContact', component: ContactProjectsComponent},
+    {path: 'followup/:currentContact', component: ContactFollowupComponent},
+  ]},
+  { path: 'projects', component: ProjectsComponent , 
+  children:[
+    {path: 'intresting/:currentProject', component: ProjectIntrestingComponent},
+    {path: 'volunteer/:currentProject', component: ProjectVolunteerComponent},
+    {path: 'embed/:currentProject', component: ProjectEmbedComponent},
+  ]},
+  { path: 'app-root', component: AppComponent },
+  { path: 'nav-menu', component: NavMenuComponent },
+  { path: 'nav-menu-start', component: NavmenuStartComponent },
+  { path: '**', redirectTo: '/' },
 ];
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
