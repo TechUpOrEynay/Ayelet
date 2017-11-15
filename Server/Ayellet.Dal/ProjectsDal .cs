@@ -15,31 +15,60 @@ namespace Ayellet.Dal
             }
         }
 
-        
+
         public Project GetProjectById(int id)
         {
             using (AyelletEntities context = new AyelletEntities())
             {
-                //if (id != 0)
-                //{
-                //    Contact contact = new Contact()
-                //    {
-                //        ID = context.Contact.Max(x => x.ID) + 1,
-                //        FirstName = "מאיר",
-                //        LastName = "שי"
-                //    };
-           
-                //    context.Contact.Add(contact);
-                //    context.SaveChanges();
-                //}
-                
                 return context.Project.FirstOrDefault(c => c.ID == id);
             }
         }
+        public Boolean UpdateProjectDetailes(Project project)
+        {
+            using (AyelletEntities context = new AyelletEntities())
+            {
+                if (project != null)
+                {
+                    var fromDB = context.Project.First(x => x.ID == project.ID);
+                    fromDB.Name = project.Name;
+                    fromDB.Date = project.Date;
+                    fromDB.Details = project.Details;
+                    context.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+        }
 
+        public int createNewProject(Project project)
+        {
+            using (AyelletEntities context = new AyelletEntities())
+            {
+                if (project != null)
+                {
+                    project.ID = context.Project.Max(x => x.ID) + 1;
+                    context.Project.Add(project);
+                    context.SaveChanges();
+                    return project.ID;
+                }
+                return 0;
 
+            }
 
-
+        }
+        public Boolean deleteProject(int id)
+        {
+            using (AyelletEntities context = new AyelletEntities())
+            {
+                if (id != 0)
+                {
+                    //context.Project.First(x => x.ID == id).IsActive = false;
+                    context.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+        }
 
     }
 }

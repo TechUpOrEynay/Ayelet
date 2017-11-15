@@ -22,5 +22,18 @@ namespace Ayellet.Bl
         {
             return _projectsDal.GetProjectById(id);
         }
+        public Boolean UpdateProjectDetailes(Project project)
+        {
+            return _projectsDal.UpdateProjectDetailes(project);
+        }
+        public int createNewProject(Project project)
+        {
+            return _projectsDal.createNewProject(project);
+        }
+        public Boolean deleteProject(int id)
+        {
+            return _projectsDal.deleteProject(id);
+        }
+        
     }
 }

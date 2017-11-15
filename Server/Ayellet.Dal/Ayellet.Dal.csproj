@@ -49,6 +49,7 @@
     <Compile Include="ProjectsDal .cs" />
     <Compile Include="ContactsDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsersDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ayellet.Entities\Ayellet.Entities.csproj">

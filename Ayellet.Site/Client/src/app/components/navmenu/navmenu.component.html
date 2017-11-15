@@ -1,37 +1,30 @@
 <mat-toolbar>
 
-    <b>אור עיני - לוגו</b>
-    <!-- <div>
-        <b>{{user.userName}}</b>
-        <button style="text-align:right" (click)="logOut()">צא </button>
-    </div> -->
+    <b>איילת השחר - לוגו</b>
+    <div *ngIf="!isLogin">
+        <button  md-button class="btn btn-primary" (click)="login()">כניסה למשתמש רשום</button>
+    </div>
+    <div *ngIf="isLogin">
+        <button style="text-align:right" (click)="logOut()">צא {{user?.userName}}</button> 
+    </div>
+    <!-- <div >
+        <button [hidden]="!isLogin"style="text-align:right" (click)="logOut()">צא {{user?.userName}}</button>
+    </div>  -->
 
     <mat-toolbar-row color="black">
         <a [routerLink]="['/home']">
                         <span class='glyphicon glyphicon-home'></span> Home
                     </a>
-        <!-- <a [routerLink]="['/counter']">
-                        <span class='glyphicon glyphicon-education'></span> Counter
-                    </a>
-        <a [routerLink]="['/fetch-data']">
-                         Fetch data
-                    </a>
-        <a [routerLink]="['/hello']">
-                        <span class='glyphicon glyphicon-user'></span> Hello
-                    </a>
-        <a [routerLink]="['/weather']">
-                        <span class='glyphicon glyphicon-cloud'></span> City Weather
-                    </a>-->
         <a [routerLink]="['/home']">
                         <span class='glyphicon glyphicon-cloud'></span> אודותינו
                     </a>
         <a [routerLink]="['/home']">
                         <span class='glyphicon glyphicon-cloud'></span> צור קשר
                     </a>
-        <a [routerLink]="['/contacts']">
+        <a [hidden]="!isLogin" [routerLink]="['/contacts']">
                         <span class='glyphicon glyphicon-cloud'></span> אנשי קשר
                    </a>
-        <a [routerLink]="['/projects']">
+        <a [hidden]="!isLogin" [routerLink]="['/projects']">
                         <span class='glyphicon glyphicon-cloud'></span> פרויקטים
                    </a>
 

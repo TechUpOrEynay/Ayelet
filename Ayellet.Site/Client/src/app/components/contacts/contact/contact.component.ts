@@ -1,7 +1,7 @@
-import { Component, OnInit , Input } from '@angular/core';
-import {Contact} from '../../../models/contact.type';
-import {FormControl} from '@angular/forms';
-import {ContactsService} from '../../../services/contacts.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { Contact } from '../../../models/contact.type';
+import { FormControl } from '@angular/forms';
+import { ContactsService } from '../../../services/contacts.service';
 
 @Component({
   selector: 'contact',
@@ -9,8 +9,12 @@ import {ContactsService} from '../../../services/contacts.service';
   styleUrls: ['./contact.component.css']
 })
 
-export class ContactComponent{
+export class ContactComponent implements OnInit {
 
-    @Input() 
-    currentContact:Contact;
+  @Input()
+  currentContact: Contact;
+  ngOnInit() {
+    if (this.currentContact)
+      alert(this.currentContact);
+  }
 }

@@ -11,7 +11,7 @@ import {ProjectVolunteerComponent} from './components/projects/project/project-v
 import {ProjectEmbedComponent} from './components/projects/project/project-embed/project-embed.component';
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
-import { NavmenuStartComponent } from './components/navmenu/navmenuStart/navmenuStart.component';
+
 
 
 const routes: Routes = [
@@ -32,7 +32,7 @@ const routes: Routes = [
   ]},
   { path: 'app-root', component: AppComponent },
   { path: 'nav-menu', component: NavMenuComponent },
-  { path: 'nav-menu-start', component: NavmenuStartComponent },
+
   { path: '**', redirectTo: '/' },
 ];
 

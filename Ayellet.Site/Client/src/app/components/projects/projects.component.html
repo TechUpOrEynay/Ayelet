@@ -1,4 +1,3 @@
-
 <!--<div class="row">
    <div dir="rtl" class="input-group col-md-10">
         <div class="input-field">
@@ -23,22 +22,35 @@
 
 <div class='row'>
 
-  <div class='col-md-8'>
+  <div class='col-md-9'>
     <project [currentProject]="selectedProject"> </project>
-  </div> 
+  </div>
   <div class='col-md-3'>
     <form class="form">
-    
-      <mat-input-container >
-          <input  type="text"  matInput placeholder="בחר פרויקט" [matAutocomplete]="auto" [formControl]="projectCtrl"  [(ngModel)]="selectedProject" >
+
+      <mat-input-container>
+        <input type="text" matInput placeholder="בחר פרויקט" [matAutocomplete]="auto" [formControl]="projectCtrl" [(ngModel)]="selectedProject">
       </mat-input-container>
 
-        <mat-autocomplete  #auto="matAutocomplete" [displayWith]="displayProject">
-          <mat-option  *ngFor="let item of filteredProjects  | async" [value]="item.name">
-            {{item.name}}
-          </mat-option>
-        </mat-autocomplete>
-   
-     </form>
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayProject">
+        <mat-option *ngFor="let item of filteredProjects  | async" [value]="item">
+          {{item.name}}
+        </mat-option>
+      </mat-autocomplete>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <span class="btn-group">
+                    <!-- <div class="container">
+                        <button class="btn btn-default" (click)=showConfirm()>Show confirm</button>
+                    </div> -->
+        <button md-button class="btn btn-primary" (click)="showEditDialog()">ערוך</button>
+        <button md-button class="btn btn-primary" (click)="deleteDonor()">מחק</button>
+        <button md-button class="btn btn-primary" (click)="showAddDialog()">הוסף</button>
+       </span>
+
+    </form>
   </div>
 </div>

@@ -18,6 +18,7 @@ namespace Ayellet.Entities
         public AyelletEntities()
             : base("name=AyelletEntities")
         {
+
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

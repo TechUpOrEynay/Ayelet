@@ -34,5 +34,26 @@ namespace Ayellet.Site.Controllers
         {
                 return _projectsBl.GetProjectById(id);
         }
+        [HttpPost]
+        [Route("UpdateProjectDetailes")]
+        public Boolean UpdateProjectDetailes(Project project)
+        {
+            return _projectsBl.UpdateProjectDetailes(project);
+        }
+        
+        [HttpPost]
+        [Route("createNewProject")]
+        public int createNewDonor(Project project)
+        {
+            var fromDB = _projectsBl.createNewProject(project);
+            return fromDB;
+        }
+        [HttpGet]
+        [Route("deleteProject/{id}")]
+        public Boolean deleteProject(int id)
+        {
+            var fromDB = _projectsBl.deleteProject(id);
+            return fromDB;
+        }
     }
 }

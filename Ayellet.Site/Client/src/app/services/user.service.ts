@@ -8,10 +8,9 @@ import { User } from '../models/user.type'
 export class UserService {
     constructor(private http: Http) {
     }
-    login(user: User) {
-        return this.http.get(`http://localhost:4222/api/Users/Login?userName=${user.userName}&password=${user.password}`)
+    getUsers() {
+        return this.http.get(`http://localhost:4222/api/Users/GetUsers`)
         //.toPromise().then(x =>{return x.json()});
-            .map(response => response.json() as boolean[])
-           .toPromise();
+            .map(response => response.json() as User[]).toPromise();
     }
 }
