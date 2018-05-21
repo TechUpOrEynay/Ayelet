@@ -10,17 +10,17 @@ import { Project } from '../../../models/project.type';
     styleUrls: ['addDialog.component.css'],
 })
 export class AddDialogComponent extends DialogComponent<null, Project> {
-    project= new Project();
+    project = new Project();
     constructor(dialogService: DialogService) {
         super(dialogService);
-       // this.project = new Project();
+        // this.project = new Project();
     }
 
     confirm() {
         this.close();
-      //  if (this.project.name && this.project.date)
-            this.result = this.project;
-      //  else alert("חובה למלאות שם פרויקט ותאריך");
+        //  if (this.project.name && this.project.date)
+        this.result = this.project;
+       return this.result; //  else alert("חובה למלאות שם פרויקט ותאריך");
     }
     cancel() {
         this.close();

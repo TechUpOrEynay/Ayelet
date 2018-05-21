@@ -18,7 +18,7 @@ export class EditDialogComponent extends DialogComponent<ConfirmModel, Project> 
     super(dialogService);
   }
   ngOnInit() {
-   alert(this.project.name)
+    alert(this.project.name)
   }
   confirm() {
     // on click on confirm button we set dialog result as true,

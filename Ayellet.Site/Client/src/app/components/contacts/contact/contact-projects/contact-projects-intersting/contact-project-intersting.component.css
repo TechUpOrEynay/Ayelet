@@ -1,0 +1,56 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+.table tr.active td {
+ 
+}
+.form-elegant .font-small {
+  font-size: 0.8rem; }
+
+.form-elegant .z-depth-1a {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+  box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25); }
+
+.form-elegant .z-depth-1-half,
+.form-elegant .btn:hover {
+  -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15); }
+ .VolunteerDatials{
+   color: #0e0f0f;
+ }
+
+ th{
+   text-align:right;
+ } 
+ body {
+    margin: 5em;
+}
+li {
+    font-size: 18px;
+    padding: 4px;
+}
+
+#toast-container > .toast {
+    background-image: none !important;
+}
+
+#toast-container > .toast:before {
+    position: fixed;
+    font-family: FontAwesome;
+    font-size: 24px;
+    line-height: 18px;
+    float: left;
+    color: #FFF;
+    padding-right: 0.5em;
+    margin: auto 0.5em auto -1.5em;
+}        
+#toast-container > .toast-warning:before {
+    content: "\f003";
+}
+#toast-container > .toast-error:before {
+    content: "\f001";
+}
+#toast-container > .toast-info:before {
+    content: "\f005";
+}
+#toast-container > .toast-success:before {
+    content: "\f002";
+}

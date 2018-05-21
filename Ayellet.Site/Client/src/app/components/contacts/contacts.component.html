@@ -1,4 +1,3 @@
-
 <!--<div class="row">
    <div dir="rtl" class="input-group col-md-10">
         <div class="input-field">
@@ -22,21 +21,24 @@
 </div> -->
 
 <div class='container-fluid'>
- <form dir="rtl" class="form">
-      <div class='row'>
-      <mat-input-container >
-          <input  type="text"  matInput placeholder="בחר איש קשר" [matAutocomplete]="auto" [formControl]="contactCtrl"  [(ngModel)]="selectedContact" >
+  <form dir="rtl" class="form">
+    <div class='row'>
+      <mat-input-container>
+        <input type="text" matInput placeholder="בחר איש קשר" [matAutocomplete]="auto" [formControl]="contactCtrl" [(ngModel)]="selectedContact">
       </mat-input-container>
 
-        <mat-autocomplete  #auto="matAutocomplete" [displayWith]="displayContact">
-          <mat-option  *ngFor="let item of filteredContacts  | async" [value]="item">
-            {{item.fullName}}
-          </mat-option>
-        </mat-autocomplete>
-      </div>
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayContact">
+        <mat-option *ngFor="let item of filteredContacts  | async" [value]="item" (onSelectionChange)="selectContact(item.id)">
+          {{item.fullName}}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
 
- </form> 
-      <div class='row'>
-        <contact [currentContact]="selectedContact"> </contact>
-      </div> 
+  </form>
+  <div class='row'>
+    <contact [currentContact]="selectedContact"> </contact>
+  
+  
+  
+  </div>
 </div>

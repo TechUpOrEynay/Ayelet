@@ -6,11 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="4dab5a74916f4ab59094ea31b4635364" Name="Diagram1">
         <EntityTypeShape EntityType="AyelletModel.Area" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AyelletModel.Contact" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyelletModel.Contact" Width="1.625" PointX="4.875" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AyelletModel.ContactFollowup" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="AyelletModel.Embed" Width="1.5" PointX="12.75" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="AyelletModel.Location" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AyelletModel.Project" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AyelletModel.Project" Width="1.5" PointX="10.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="AyelletModel.ProjectIntersted" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="AyelletModel.ProjectVolunteer" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="AyelletModel.RelatedPerson" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />

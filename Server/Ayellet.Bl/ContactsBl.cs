@@ -22,5 +22,19 @@ namespace Ayellet.Bl
         {
             return _contactsDal.GetContact(id);
         }
+
+        public Boolean UpdateContactDetailes(Contact contact)
+        {
+            return _contactsDal.UpdateContactDetailes(contact);
+        }
+        //public Boolean deleteProjectVolunteer(int id)
+        //{
+        //    ProjectVolunteerDal _projectVolunteerDal = new ProjectVolunteerDal();
+        //    return _projectVolunteerDal.deleteProjectVolunteer(id);
+        //}
+        public int createNewContact(Contact contact)
+        {
+            return _contactsDal.createNewContact(contact);
+        }
     }
 }

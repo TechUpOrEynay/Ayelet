@@ -1,1 +1,44 @@
-<p>מתעניינים</p>
+<p>מתענינים</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> # </th>
+            <th scope="col">שם איש קשר</th>
+            <th scope="col">מיקום</th>
+            <th scope="col">מייל</th>
+            <th scope="col">טלפון</th>
+            <th scope="col">הערות</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of interesting  let i=index">
+            <th scope="row ">{{i+1}}</th>
+            <td>{{c.contactFirstName}} {{c.contactLastName}}</td>
+            <td>{{c.contactLocation}}</td>
+            <td>{{c.contactEmail}}</td>
+            <td>{{c.contactPhone}}</td>
+            <td>{{c.details}}</td>
+            <!-- <td><input type="text" [(ngModel)]="c.details"></td> -->
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <select [(ngModel)]="contactName" (change)="onSelectContact($event) ">
+                    <option *ngFor="let x of contacts " [value]="x.id ">
+                        {{x.firstName}} {{x.lastName}}
+                    </option>
+                </select>
+                <!--<input [(ngModel)]=" interestedAdd.contactLastName " name="id ">-->
+            </td>
+            <td>{{location}}</td> 
+            <td>{{selectedContact.Email}}</td>
+            <td>{{selectedContact.phone}}</td>
+            <td>
+               <input [(ngModel)]="Details">
+            </td>
+        </tr>
+        <tr>
+            <button (click)="addIntersting() ">הוסף מתענין</button>
+        </tr>
+    </tbody>
+</table>

@@ -40,10 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllDetailsProjectsBl.cs" />
+    <Compile Include="AreaBl.cs" />
+    <Compile Include="InterstedDetailsBl.cs" />
+    <Compile Include="LocationBl.cs" />
     <Compile Include="ProjectsBl.cs" />
     <Compile Include="ContactsBl.cs" />
     <Compile Include="ErrorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelatedPersonBl.cs" />
     <Compile Include="UsersBl.cs" />
   </ItemGroup>
   <ItemGroup>

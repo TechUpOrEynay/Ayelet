@@ -79,6 +79,8 @@
     <Compile Include="Location.cs">
       <DependentUpon>AyelletEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AllDetailsProjects.cs" />
+    <Compile Include="Models\ModelInterstedDetails.cs" />
     <Compile Include="Project.cs">
       <DependentUpon>AyelletEntities.tt</DependentUpon>
     </Compile>
@@ -130,5 +132,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

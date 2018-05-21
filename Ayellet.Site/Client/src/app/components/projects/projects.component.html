@@ -26,14 +26,14 @@
     <project [currentProject]="selectedProject"> </project>
   </div>
   <div class='col-md-3'>
-    <form class="form">
+    
 
       <mat-input-container>
         <input type="text" matInput placeholder="בחר פרויקט" [matAutocomplete]="auto" [formControl]="projectCtrl" [(ngModel)]="selectedProject">
       </mat-input-container>
 
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayProject">
-        <mat-option *ngFor="let item of filteredProjects  | async" [value]="item">
+        <mat-option *ngFor="let item of filteredProjects  | async" [value]="item" (onSelectionChange)="selectContact(item.id)">
           {{item.name}}
         </mat-option>
       </mat-autocomplete>
@@ -51,6 +51,6 @@
         <button md-button class="btn btn-primary" (click)="showAddDialog()">הוסף</button>
        </span>
 
-    </form>
+
   </div>
 </div>

@@ -46,9 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AreaDal.cs" />
+    <Compile Include="LocationDal.cs" />
+    <Compile Include="ProjectInterstedDal.cs" />
     <Compile Include="ProjectsDal .cs" />
     <Compile Include="ContactsDal.cs" />
+    <Compile Include="ProjectVolunteerDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelatedPersonDal.cs" />
     <Compile Include="UsersDal.cs" />
   </ItemGroup>
   <ItemGroup>

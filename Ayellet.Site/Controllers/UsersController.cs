@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Ayellet.Entities;
-namespace OrEyni.Site.Controllers
+namespace Ayellet.Site.Controllers
 {
     [RoutePrefix("api/Users")]
     public class UsersController : ApiController

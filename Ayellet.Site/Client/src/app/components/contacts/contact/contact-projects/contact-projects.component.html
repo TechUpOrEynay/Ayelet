@@ -1,1 +1,20 @@
-<p>פרויקטים</p> 
+<!--<mat-tab label="פרויקטים">
+</mat-tab>-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/css/mdb.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/js/mdb.min.js"></script>
+<p>פרויקטים</p>
+<!--Table-->
+
+<!--<img src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" class="img-fluid z-depth-1" alt="CSS section - example photo">-->
+<div class="row">
+    <div class="col-md-12">
+        <accordion>
+            <accordion-group heading="התנדבות " isOpen="true">
+                <contact-projects-volunteer></contact-projects-volunteer>
+            </accordion-group>
+            <accordion-group heading="השתתפות" [isOpen]="isOpen">
+                <contact-projects-intersting></contact-projects-intersting>
+            </accordion-group>
+        </accordion>
+    </div>
+</div>

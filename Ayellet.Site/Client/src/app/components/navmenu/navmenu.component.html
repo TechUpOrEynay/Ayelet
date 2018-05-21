@@ -1,11 +1,18 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/css/mdb.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/js/mdb.min.js"></script>
+<!--<div class="view overlay hm-zoom z-depth-1">
+    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" class="img-fluid z-depth-1" alt="CSS section - example photo">
+    <div class="mask flex-center waves-effect waves-light">
+        <h1 class="white-text">איילת השחר</h1>
+    </div>-->
+
 <mat-toolbar>
 
-    <b>איילת השחר - לוגו</b>
     <div *ngIf="!isLogin">
-        <button  md-button class="btn btn-primary" (click)="login()">כניסה למשתמש רשום</button>
+        <button md-button class="btn btn-primary" (click)="login()">כניסה למשתמש רשום</button>
     </div>
     <div *ngIf="isLogin">
-        <button style="text-align:right" (click)="logOut()">צא {{user?.userName}}</button> 
+        <button style="text-align:right" (click)="logOut()">צא {{user?.userName}}</button>
     </div>
     <!-- <div >
         <button [hidden]="!isLogin"style="text-align:right" (click)="logOut()">צא {{user?.userName}}</button>
@@ -13,20 +20,20 @@
 
     <mat-toolbar-row color="black">
         <a [routerLink]="['/home']">
-                        <span class='glyphicon glyphicon-home'></span> Home
-                    </a>
+            <span class='glyphicon glyphicon-home'></span> Home
+        </a>
         <a [routerLink]="['/home']">
-                        <span class='glyphicon glyphicon-cloud'></span> אודותינו
-                    </a>
+            <span class='glyphicon glyphicon-cloud'></span> אודותינו
+        </a>
         <a [routerLink]="['/home']">
-                        <span class='glyphicon glyphicon-cloud'></span> צור קשר
-                    </a>
+            <span class='glyphicon glyphicon-cloud'></span> צור קשר
+        </a>
         <a [hidden]="!isLogin" [routerLink]="['/contacts']">
-                        <span class='glyphicon glyphicon-cloud'></span> אנשי קשר
-                   </a>
+            <span class='glyphicon glyphicon-cloud'></span> אנשי קשר
+        </a>
         <a [hidden]="!isLogin" [routerLink]="['/projects']">
-                        <span class='glyphicon glyphicon-cloud'></span> פרויקטים
-                   </a>
+            <span class='glyphicon glyphicon-cloud'></span> פרויקטים
+        </a>
 
     </mat-toolbar-row>
 </mat-toolbar>

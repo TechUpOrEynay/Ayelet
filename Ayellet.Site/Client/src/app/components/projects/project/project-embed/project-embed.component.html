@@ -1,1 +1,26 @@
-<p>שיבוץ</p>
+<div class="row">
+        <input type="checkbox" [checked]="isLocation" (change)="isLocation = !isLocation" />
+   <label >שבץ לפי מיקום</label>
+</div>
+<br>
+<form #embedForm="ngForm" ng-submit="embedForm.form.valid &&embProject()">
+     <div class="col-md-4">
+            <label >הערות</label> 
+            <input  class="form-control" placeholder="הערות" type="text" [(ngModel)]="embedProject.details" name="details"  >
+      </div>
+      <div class="col-md-4">
+            <label for="selectedVolunteer">מתנדבים</label> 
+            <select class="form-control" placeholder="מתנדבים" required [(ngModel)]="selectedVolunteer" name="bbb">
+                <option *ngFor="let c of volunteers" [ngValue]="c">{{c.contactFirstName}} {{c.contactLastName}}</option>
+            </select>
+      </div>
+      <div class="col-md-4">
+            <label for="selectedInterested">מתעניינים</label>
+            <select class="form-control" placeholder="מתעניינים" required [(ngModel)]="selectedInterested" name="aaa" (change)="IsLocationTrue()" >     
+                <option *ngFor="let i of interested" [ngValue]="i">{{i.contactFirstName}} {{i.contactLastName}}</option>
+            </select>
+      </div>
+   <button  [disabled]="!embedForm.form.valid" class="btn btn-success" type="submit" (click)="embProject()">שבץ</button>
+</form>
+
+

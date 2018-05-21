@@ -1,1 +1,184 @@
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/css/mdb.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/js/mdb.min.js"></script> -->
 <p>פרטים</p>
+<form class="form-horizontal has-feedback " *ngIf="contacts">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="col-md-12">
+                <div class="form-group has-feedback">
+                    <div class="col-md-8">
+                        <input class="form-control" required [(ngModel)]="contacts.firstName" name="name" #name="ngModel">
+
+                        <span class="form-control-feedback glyphicon glyphicon-user"></span>
+                        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                            <div [hidden]="!name.hasError('required')">השם ריק</div>
+                        </div>
+                    </div>
+                    <label class="control-label col-md-4">1שם פרטי</label>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group has-feedback">
+                    <div class="col-md-8">
+                        <input pattern="[0-9]*" id="mobilenumber" required [(ngModel)]="contacts.mobile" name="mobilenumber" pattern="[0-9]*" minlength="10"
+                            maxlength="10" #mobile="ngModel" class="form-control" />
+                        <span class="form-control-feedback glyphicon glyphicon-erase"></span>
+                        <div [hidden]="mobile.valid || mobile.pristine" class="alert alert-danger">
+                            <div [hidden]="!mobile.hasError('minlength')">השדה מכיל 10 ספרות</div>
+                            <div [hidden]="!mobile.hasError('required')">השדה ריק</div>
+                            <div [hidden]="!mobile.hasError('pattern')">השדה יכול להכיל רק ספרות</div>
+                        </div>
+                    </div>
+                    <label class="control-label col-sm-4">פלפון</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="col-md-12">
+                <div class="form-group has-feedback">
+                    <div class="col-md-8">
+                        <input class="form-control" required [(ngModel)]="contacts.lastName" name="lastName" #lastName="ngModel" id="lastName" />
+                        <span class="form-control-feedback glyphicon glyphicon-calendar"></span>
+                        <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">
+                            <div [hidden]="!lastName.hasError('required')">השם ריק</div>
+                        </div>
+                    </div>
+                    <label class="control-label col-md-4">שם משפחה</label>
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group has-feedback">
+                    <div class="col-md-8">
+                        <input pattern="[0-9]*" id="phone" required [(ngModel)]="contacts.phone" name="phone" pattern="[0-9]*" minlength="10" maxlength="10"
+                            #phone="ngModel" class="form-control" />
+                        <span class="form-control-feedback glyphicon glyphicon-phone-alt"></span>
+                        <div [hidden]="phone.valid || phone.pristine" class="alert alert-danger">
+                            <div [hidden]="!phone.hasError('minlength')">השדה מכיל 10 ספרות</div>
+                            <div [hidden]="!phone.hasError('required')">השדה ריק</div>
+                            <div [hidden]="!phone.hasError('pattern')">השדה יכול להכיל רק ספרות</div>
+                        </div>
+                    </div>
+                    <label class="control-label col-sm-4">טלפון</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="col-md-12">
+                <div class="form-group has-feedback" *ngIf="listLocation">
+                    <div class="col-md-8">
+                        <select data-width="100px" class="selectpicker form-control" id="locat" required class=" custom-select" name="locat" [(ngModel)]="selL"
+                            (change)="onChangeRelatedPerson(locat.value)" #locat="ngModel">
+                            <!--<option class="selected" [value]=""></option>-->
+                            <option *ngFor="let loc of listLocation" [value]="loc.id">{{loc.name}}</option>
+                        </select>
+                        <div [hidden]="locat.valid || locat.pristine" class="alert alert-danger">
+                            <div [hidden]="!locat.hasError('required')">השדה ריק</div>-->
+                        </div>
+                    </div>
+                    <label class="control-label col-sm-4">מיקום</label>
+                </div>
+            </div>
+            <div class="col-md-12"></div>
+            <div class="col-md-12">
+                <div class="form-group has-feedback" *ngIf="listRelatedPerson">
+                    <div class="col-md-8">
+                        <select data-width="100px" class="selectpicker form-control" id="related" required class=" custom-select" name="related"
+                            [(ngModel)]="selR" (change)="onChangeRelatedPerson(related.value)" #related="ngModel">
+                            <!--<option class="selected" [value]="selectedRelatedPerson.name"></option>-->
+                            <option *ngFor="let rel of listRelatedPerson" [value]="rel.id">{{rel.name}}</option>
+                        </select>
+                        <div [hidden]="related.valid || related.pristine" class="alert alert-danger">
+                            <div [hidden]="!related.hasError('required')">השדה ריק</div>-->
+                        </div>
+                    </div>
+                    <label class="control-label col-sm-4">איש קשר </label>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-3">
+            <!-- <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+                    <mat-hint>נדרש דוא"ל</mat-hint>
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        נא להזין כתובת דוא"ל חוקית
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Email is
+                        <strong>נדרש דוא"ל</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div> -->
+
+
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="form-group has-feedback">
+            <div class="col-md-12">
+                <input *ngIf="lengthArrry==selectedRow" [ngModel]="contacts.date| date: 'dd/MM/yyyy'" name="aaa" class="VolunteerDatials form-control "
+                    (ngModelChange)="contacts.date = $event" type="date">
+                <span class="form-control-feedback glyphicon glyphicon-calendar"></span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- <mat-form-field class="example-full-width">
+        <input #firstN matInput placeholder="שם פרטי" [value]="contacts.firstName">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="שם משפחה" [value]="contacts.lastName">
+    </mat-form-field>
+    <mat-form-field class="example-full-widthclass ">
+        <input matInput placeholder="טלפון" [value]="contacts.phone">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="פלפון" [value]="contacts.mobile">
+    </mat-form-field>-->
+
+
+
+
+    <!--<mat-form-field class="example-full-width">
+        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>-->
+    <hr>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <mat-radio-group>
+            <mat-radio-button value="1" name="radiobutton" [checked]="contacts.isVolunteer">מתנדב</mat-radio-button>
+            <mat-radio-button value="2" name="radiobutton" [checked]="contacts.isNewlater">ניוזלטר</mat-radio-button>
+        </mat-radio-group>
+        <br>
+    </div>
+    <hr>
+    <textarea *ngIf="lengthArrry==selectedRow" placeholder="מעוניין ב..." [(ngModel)]="contacts.notes" name="notes" class="form-control z-depth-1"
+        id="exampleFormControlTextarea6" rows="3"></textarea>
+
+    <button type="button" class="btn btn-outline-default glyphicon glyphicon-saved" (click)="updateCurrentContact()">שמור שינויים</button>
+    <button type="button" class="btn btn btn-default glyphicon glyphicon-trash" (click)="notUpdateCurrentContact()">בטל שינויים</button>
+    <button type="button" class="btn btn btn-primary glyphicon glyphicon-plus" (click)="creatNewContact()">איש קשר חדש</button>
+
+    <!--    <div class="view overlay hm-white-slight">
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(72).jpg" class="img-fluid" alt="">
+        <a href="#">
+            <div class="mask"></div>
+        </a>
+    </div>-->
+
+
+
+</form>

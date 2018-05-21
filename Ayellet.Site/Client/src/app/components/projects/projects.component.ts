@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../../models/project.type';
 import { FormControl } from '@angular/forms';
 import { ProjectsService } from '../../services/projects.service';
+import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material';
 import { EditDialogComponent } from '../dialogs/editDialog/editDialog.component';
 import { AddDialogComponent } from '../dialogs/addDialog/addDialog.component';
@@ -16,13 +17,13 @@ import 'rxjs/add/operator/map';
 })
 export class ProjectsComponent implements OnInit {
 
-    private projects: Project[] = [];
+    private projects: Project[];
     projectCtrl: FormControl;
     filteredProjects: any;
     public selectedProject: Project;
     public elementRef;
-    constructor(private projectsService: ProjectsService, public dialog: MatDialog, private dialogService: DialogService) {
-        this.selectedProject = new Project;
+    flag:boolean= false;
+    constructor(private projectsService: ProjectsService  , private _router: Router, public dialog: MatDialog, private dialogService: DialogService) {
     }
     ngOnInit() {
         this.projectCtrl = new FormControl();
@@ -39,6 +40,9 @@ export class ProjectsComponent implements OnInit {
     }
     displayProject(project: Project): string {
         return project ? project.name : null;
+    }
+    selectContact(id) {
+        this._router.navigate(['/projects/intresting', id]);
     }
     showEditDialog() {
         let disposable = this.dialogService.addDialog(EditDialogComponent, {

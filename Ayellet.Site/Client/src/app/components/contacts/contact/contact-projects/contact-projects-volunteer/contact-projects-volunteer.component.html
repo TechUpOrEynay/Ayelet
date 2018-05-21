@@ -1,0 +1,103 @@
+<div>
+    <h1>התנדבות</h1>
+</div>
+<div class="row">
+
+    <div class="col-md-12">
+        <table class="table">
+
+            <!--Table head-->
+            <thead class="blue-grey lighten-6">
+                <tr>
+                    <th>#</th>
+                    <th>פרויקט</th>
+                    <th>תפקיד</th>
+                    <th>מיקום</th>
+                    <th>תאריך</th>
+                    <th>רשמים</th>
+                </tr>
+            </thead>
+            <!--Table head-->
+
+            <!--Table body-->
+            <tbody>
+                <tr name="trArry" *ngFor="let project of projects; let i=index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+                    <th scope="row ">{{i+1}}</th>
+                    <td contenteditable="false ">
+                        <span *ngIf="i!=selectedRow">{{project.nameProject}}</span>
+                        <span *ngIf="i==selectedRow&&currentIsActive">{{project.nameProject}}</span>
+                        <input *ngIf="i==selectedRow&&!currentIsActive" [(ngModel)]="selectedProject.nameProject" class="VolunteerDatials form-control">
+                    </td>
+                    <td>
+                        <span *ngIf="i!=selectedRow">{{project.roleVolunteer}}</span>
+                        <span *ngIf="i==selectedRow&&currentIsActive">{{project.roleVolunteer}}</span>
+                        <input *ngIf="i==selectedRow&&!currentIsActive" [(ngModel)]="selectedProject.roleVolunteer" class="VolunteerDatials form-control">
+                    </td>
+                    <td>
+                        <span *ngIf="i!=selectedRow">{{project.nameArea}}</span>
+                        <span *ngIf="i==selectedRow&&currentIsActive">{{project.nameArea}}</span>
+                        <input *ngIf="i==selectedRow&&!currentIsActive" [(ngModel)]="selectedProject.nameArea" class="VolunteerDatials form-control">
+                    </td>
+                    <td>
+                        <span *ngIf="i!=selectedRow">{{project.date| date: 'dd/MM/yyyy'}}</span>
+                        <span *ngIf="i==selectedRow&&currentIsActive">{{project.date| date: 'dd/MM/yyyy'}}</span>
+                        <input *ngIf="i==selectedRow&&!currentIsActive" type="date" [ngModel]="selectedProject.date| date: 'dd/MM/yyyy'" (ngModelChange)="selectedProject.date = $event"
+                            class="VolunteerDatials form-control">
+                    </td>
+                    <td>
+                        <span *ngIf="i!=selectedRow">{{project.details}}</span>
+                        <span *ngIf="i==selectedRow&&currentIsActive">{{project.details}}</span>
+                        <textarea *ngIf="i==selectedRow&&!currentIsActive" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"
+                            [(ngModel)]="selectedProject.details"></textarea>
+                    </td>
+                </tr>
+                <tr *ngIf="flagAddition" (click)="setClickedNewRow()" [class.active]="lengthArrry==selectedRow">
+                    <th>{{lengthArrry+1}}</th>
+                    <td>
+                        <!--<input *ngIf="lengthArrry==selectedRow" [(ngModel)]="newProject.nameProject" class="VolunteerDatials form-control">-->
+                        <select class="form-control custom-select" [ngModel]="currentProject" (ngModelChange)="onChangeProject($event)" name="sel1">
+                            <!--<option class="selected" [value]=""></option>-->
+                            <option *ngFor="let p of listProjects" [ngValue]="p">{{p.name}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input *ngIf="lengthArrry==selectedRow" [ngModel]="" (keypress)="newProject.roleVolunteer=$event.target.value" class="VolunteerDatials form-control"
+                            type="text">
+                    </td>
+                    <td>
+                        <!--<input *ngIf="lengthArrry==selectedRow " [(ngModel)]="newProject.nameArea" class="VolunteerDatials form-control">
+                -->
+
+
+                        <select type="text" class="form-control custom-select" [ngModel]="selectedArea" (ngModelChange)="onChangeArea($event)" name="sel3">
+                            <!--<option class="selected" [value]=""></option>-->
+                            <option *ngFor="let area of listArea" [ngValue]="area">{{area.name}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input *ngIf="lengthArrry==selectedRow" [ngModel]="newProject.date| date: 'dd/MM/yyyy'" class="VolunteerDatials form-control "
+                            (ngModelChange)="newProject.date = $event" type="date">
+                    </td>
+                    <td>
+                        <textarea *ngIf="lengthArrry==selectedRow&&newProject" placeholder="הקש פרטים:" [ngModel]="" (keypress)="newProject.details=$event.target.value"
+                            class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+            <!--Table body-->
+        </table>
+    </div>
+</div>
+<!--Table-->
+
+<button type="button" class="btn btn-outline-primary glyphicon glyphicon-pencil" (click)="EditRow()">עדכן</button>
+<button type="button" class="btn btn-outline-default glyphicon glyphicon-trash" (click)="deleteRow()">מחק</button>
+<button type="button" class="btn btn btn-default glyphicon glyphicon-plus" (click)="AddRow()">הוסף</button>
+<button type="button" class="btn btn btn-primary glyphicon glyphicon-saved " (click)="showAddDialog()">אישור</button>
+<button type="button" class="k-button btn btn-success glyphicon glyphicon-save" (click)="save(excelexport)">Export To Excel</button>
+<kendo-excelexport [data]="projects" fileName="projects.xlsx" [filterable]="true" #excelexport>
+    <kendo-excelexport-column field="roleVolunteer" title="תפקיד">
+    </kendo-excelexport-column>
+    <kendo-excelexport-column field="nameProject" title="שם הפרויקט">
+    </kendo-excelexport-column>
+</kendo-excelexport>
